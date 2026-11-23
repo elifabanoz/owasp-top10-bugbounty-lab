@@ -1,0 +1,1 @@
+Demo parser component, version 2.0.0. This is inert text for the local supply chain exercise.

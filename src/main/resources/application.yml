@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: bugbounty-admin-lab
+  datasource:
+    username: ${LAB_DB_USER:bugbounty}
+    password: ${LAB_DB_PASSWORD:}
+  flyway:
+    enabled: true
+server:
+  address: ${LAB_BIND:127.0.0.1}
+  port: ${LAB_PORT:8080}
+lab:
+  seed: ${LAB_SEED:false}
+  jwt-secret: ${LAB_JWT_SECRET:}
+  webhook-secret: ${LAB_WEBHOOK_SECRET:}

@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: bugbounty
+      POSTGRES_PASSWORD: local-demo-only
+      POSTGRES_DB: bugbounty_secure
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - lab_postgres:/var/lib/postgresql/data
+      - ./docker/init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bugbounty -d bugbounty_secure"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  lab_postgres:
